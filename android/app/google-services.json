@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "438587450142",
+    "project_id": "phase-9fe6a",
+    "storage_bucket": "phase-9fe6a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:438587450142:android:df1cc339066d47fb815f0f",
+        "android_client_info": {
+          "package_name": "com.example.meditech_rent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "438587450142-o516p778mb5a0d2jskks1cvb07ap3kpf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWXeR1ZRO97V9cuSH13r4TGSjCJ2VY1KU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "438587450142-o516p778mb5a0d2jskks1cvb07ap3kpf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
