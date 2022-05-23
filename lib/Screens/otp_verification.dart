@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:meditech_rent/Screens/complete_profile.dart';
 import 'package:meditech_rent/centralized.dart';
 import 'package:meditech_rent/phone_bloc/auth_cubit/auth_cubit.dart';
 import 'package:meditech_rent/phone_bloc/auth_cubit/auth_state.dart';
-import 'continue_buyer_seller.dart';
 
 class OTPVerify extends StatelessWidget {
   TextEditingController otpController = TextEditingController();
@@ -63,14 +63,14 @@ class OTPVerify extends StatelessWidget {
                 listener: (context, state) {
                   if(state is AuthLoggedInState){
                     Navigator.popUntil(context, (route) => route.isFirst);
-                    Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context)=> BuyerSeller()));
+                    Navigator.pushReplacement(context, CupertinoPageRoute(builder: (context)=> const CompleteProfile()));
                   //NAVIGATION AFTER PHONE VERIFICATION
                   }
                   else if(state is AuthErrorState){
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(content: Text(state.error),
                       backgroundColor: Colors.red,
-                        duration: Duration(milliseconds: 3000),
+                        duration: const Duration(milliseconds: 3000),
                       )
                     );
                   }

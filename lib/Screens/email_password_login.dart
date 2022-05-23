@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:meditech_rent/Screens/complete_profile.dart';
+import 'package:meditech_rent/Screens/home_screen.dart';
 import 'package:meditech_rent/centralized.dart';
-import 'continue_buyer_seller.dart';
 import 'forgot_password.dart';
 
 class EmailLogIn extends StatefulWidget {
@@ -174,7 +175,7 @@ void signIn(String email, String password) async {
           .then((uid) => {
         Fluttertoast.showToast(msg: "Login Successful"),
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-            builder: (context)=>const BuyerSeller())),
+            builder: (context)=>const HomeScreen())),
       }).catchError((e){
         Fluttertoast.showToast(msg: e!.message);
       });

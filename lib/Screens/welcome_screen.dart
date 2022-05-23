@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meditech_rent/Screens/splash_screen.dart';
 import 'package:meditech_rent/centralized.dart';
-import 'continue_buyer_seller.dart';
 import 'email_password_login.dart';
 import 'google_email_phone.dart';
 
@@ -28,15 +27,15 @@ class WelcomeScreen extends StatelessWidget {
           child: Column(
             children: [
               const Spacer(),
-              Image.asset("assets/images/MediTech-Rent.png", height: 140),
+              Image.asset("assets/images/MediTech-Rent.png", height: 120),
               const SizedBox(height: 30),
-              const BoldFont("Welcome to", 20, blue),
-              const SizedBox(height: 7),
-              const BoldFont("Meditech-Rent", 20, darkblue),
+              const BoldFont("Welcome to", 19, blue),
+              const SizedBox(height: 4),
+              const BoldFont("Meditech-Rent", 19, darkblue),
               const SizedBox(height: 20),
-              const PlainFont("Get any medical product on rent instantly.", 16, darkblue),
+              const PlainFont("Get any medical product on rent instantly.", 15, darkblue),
               const SizedBox(height: 5),
-              const PlainFont("Join Us Now !!", 16, darkblue),
+              const PlainFont("Join Us Now !!", 15, darkblue),
               const Spacer(),
               MaterialButton(
                   elevation: 0, color: darkblue,

@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:meditech_rent/Screens/continue_buyer_seller.dart';
+import 'package:meditech_rent/Screens/complete_profile.dart';
 import 'package:meditech_rent/centralized.dart';
 import '../google_firebase/fire_base_service.dart';
 import 'email_password_register.dart';
@@ -44,13 +44,13 @@ class _ContinueOptionState extends State<ContinueOption> {
                     setState(() {
                       isLoading = true;
                     });
-                    FirebaseService service = new FirebaseService();
+                    FirebaseService service = FirebaseService();
                     try {
                       await service.signInwithGoogle();
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const BuyerSeller()));
+                              builder: (context) => const CompleteProfile()));
                     } catch (e) {
                       if (e is FirebaseAuthException) {
                         const SnackBar(

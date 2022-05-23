@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:meditech_rent/Screens/complete_profile.dart';
 import 'package:meditech_rent/centralized.dart';
 import 'package:meditech_rent/email_models/user_model.dart';
-import 'continue_buyer_seller.dart';
 import 'email_password_login.dart';
 
 class EmailRegister extends StatefulWidget {
@@ -272,7 +272,7 @@ postDetailsToFirestore() async{
   Fluttertoast.showToast(msg: "Account Created Successfully");
   
   Navigator.pushAndRemoveUntil(context, MaterialPageRoute(
-      builder: (context)=>const BuyerSeller()), (route) => false);
+      builder: (context)=>const CompleteProfile()), (route) => false);
 }
 
 }
