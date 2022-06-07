@@ -200,3 +200,168 @@ class _editYourProductState extends State<editYourProduct> {
                           return ("Please enter a valid Title (min 3 char)");
                         }
                         return null;
+                        },
+                    ), //Title Field
+
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const PlainFont("Add product Description", 15, black),
+                    const SizedBox(
+                      height: 10,
+                    ),
+
+                    TextFormField(
+                      minLines: 3,
+                      maxLines: 5,
+                      maxLength: 50,
+                      keyboardType: TextInputType.multiline,
+                      controller: desc,
+                      decoration: const InputDecoration(
+                        fillColor: white,
+                        filled: true,
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: blue, width: 2.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                          color: blue,
+                          width: 2.0,
+                        )),
+                        contentPadding: EdgeInsets.all(10),
+                      ),
+                      validator: (value) {
+                        RegExp regex = RegExp(r'^.{3,}$');
+                        if (value!.isEmpty) {
+                          return ("Description can't be empty");
+                        }
+                        if (!regex.hasMatch(value)) {
+                          return ("Please enter a valid description (min 7 char)");
+                        }
+                        return null;
+                      },
+                    ), //Description Field
+
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const PlainFont("Add Rent per day", 15, black),
+                    const SizedBox(
+                      height: 10,
+                    ),
+
+                    TextFormField(
+                      controller: rentDay,
+                      decoration: const InputDecoration(
+                        fillColor: white,
+                        filled: true,
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: blue, width: 2.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                          color: blue,
+                          width: 2.0,
+                        )),
+                        contentPadding: EdgeInsets.all(10),
+                      ),
+                      validator: (value) {
+                        RegExp regex = RegExp(r'^.{3,}$');
+                        if (value!.isEmpty) {
+                          return ("Rent value can't be empty");
+                        }
+                        if (!regex.hasMatch(value)) {
+                          return ("Please enter a valid rent");
+                        }
+                        return null;
+                      },
+                    ), //Rent per day
+
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    MaterialButton(
+                      elevation: 0,
+                      color: darkblue,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      padding: const EdgeInsets.all(10),
+                      minWidth: MediaQuery.of(context).size.width,
+                      onPressed: () {
+                        if (_formkey.currentState!.validate()) {
+                          addData(widget.Documentid);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const EditRemoveProduct()));
+                        }
+                      },
+                      child: const BoldFont("Edit Product", 20, white),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  addData(String? id) async {
+    final docUser =
+        FirebaseFirestore.instance.collection("profileInfo").doc(id);
+    final auth = FirebaseAuth.instance;
+    final useruid = auth.currentUser!.uid;
+
+    final demoData = User(
+      id: docUser.id,
+      imageurl: flag == true ? photoUrl : widget.Documentimage,
+      title: title!.text,
+      desc: desc!.text,
+      rent: rentDay!.text,
+      Useruid: useruid,
+    );
+    final json = demoData.toJson();
+    await docUser.update(json);
+    setState(() {});
+  }
+}
+
+class User {
+  String? id;
+  String imageurl;
+  String title;
+  String desc;
+  String? rent;
+  String Useruid;
+  User({
+    required this.id,
+    required this.imageurl,
+    required this.title,
+    required this.desc,
+    required this.rent,
+    required this.Useruid,
+  });
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'imageurl': imageurl,
+      'title': title,
+      'desc': desc,
+      'rent': rent,
+      'Useruid': Useruid,
+    };
+  }
+
+  static User fromJson(Map<String, dynamic> json) => User(
+      id: json['id'],
+      imageurl: json['imageurl'],
+      title: json['title'],
+      desc: json['desc'],
+      rent: json['rent'],
+      Useruid: json['Useruid']);
+}
