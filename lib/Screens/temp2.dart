@@ -127,3 +127,24 @@ class _editRantDetailState extends State<editRantDetail> {
                     }
                     return null;
                   },
+                  controller: widget.endDate,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(13),
+                      borderSide: const BorderSide(
+                        color: blue,
+                        width: 1.0,
+                      ),
+                    ),
+                    hintText: "Enter start date",
+                    hintStyle: const TextStyle(
+                        color: hint,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins'),
+                    contentPadding: const EdgeInsets.all(13),
+                  ),
+                ),
+                
