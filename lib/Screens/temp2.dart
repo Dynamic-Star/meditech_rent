@@ -50,3 +50,52 @@ class _editRantDetailState extends State<editRantDetail> {
             end: Alignment.bottomCenter,
             begin: Alignment.topCenter,
           ),
+          ),
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(30, 20, 30, 20),
+            child: Column(
+              children: [
+                const SizedBox(
+                  height: 25,
+                ),
+                const PlainFont(
+                    "Enter more details of your renting", 16, black),
+                const SizedBox(
+                  height: 15,
+                ),
+                ParagraphText(
+                    "Note : Minimum rent period will be 30 days.\n            Add your date in accordance with this.",
+                    blue,
+                    16,
+                    TextAlign.left),
+                const SizedBox(
+                  height: 30,
+                ),
+                const Align(
+                    alignment: Alignment.bottomLeft,
+                    child: BoldFont("Start date", 18, darkblue)),
+                const SizedBox(
+                  height: 8,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return ("Please fill start date");
+                    }
+                    if (!RegExp(r'^.{10,}$').hasMatch(value)) {
+                      return ("Invalid number (10 digits required)");
+                    }
+                    return null;
+                  },
+                  controller: widget.startDate,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(13),
+                      borderSide: const BorderSide(
+                        color: blue,
+                        width: 1.0,
+                      ),
+                    ),
