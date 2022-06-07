@@ -99,3 +99,31 @@ class _editRantDetailState extends State<editRantDetail> {
                         width: 1.0,
                       ),
                     ),
+                    hintText: "Enter start date",
+                    hintStyle: const TextStyle(
+                        color: hint,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Poppins'),
+                    contentPadding: const EdgeInsets.all(13),
+                  ),
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const Align(
+                    alignment: Alignment.bottomLeft,
+                    child: BoldFont("End date", 18, darkblue)),
+                const SizedBox(
+                  height: 8,
+                ),
+                TextFormField(
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return ("Please Fill End Date");
+                    }
+                    if (!RegExp(r'^.{10,}$').hasMatch(value)) {
+                      return ("Invalid number (10 digits required)");
+                    }
+                    return null;
+                  },
