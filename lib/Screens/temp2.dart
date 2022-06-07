@@ -147,4 +147,41 @@ class _editRantDetailState extends State<editRantDetail> {
                     contentPadding: const EdgeInsets.all(13),
                   ),
                 ),
-                
+                const SizedBox(
+                  height: 50,
+                ),
+                const BoldFont(
+                    "Your total cart price per 30 days = \$ 100", 16, darkblue),
+                const SizedBox(
+                  height: 100,
+                ),
+                MaterialButton(
+                    elevation: 0,
+                    color: darkblue,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => AddAddress('startDate', 'endDate')));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(11.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: const [
+                          BoldFont("Continue", 18, white
+                          ),
+                        ],
+                      ),
+                    ))
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
