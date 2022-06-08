@@ -50,3 +50,21 @@ class _YourCartState extends State<YourCart> {
           padding: const EdgeInsets.all(18.0),
           child: StreamBuilder(
               stream: FirebaseFirestore.instance
+               stream: FirebaseFirestore.instance
+                  .collection("cardInfo")
+                  .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+                  .snapshots(),
+              builder: ((context, snapshot) {
+                if (snapshot.hasData) {
+                  final userSnap = snapshot.data! as QuerySnapshot;
+                  return ListView.builder(
+                      itemCount: userSnap.docs.length,
+                      itemBuilder: ((context, index) {
+                        final userData =
+                            userSnap.docs[index].data() as Map<String, dynamic>;
+                        return Column(
+                          children: [
+                            Row(
+                              children: [
+                                Column(
+                                  children:
