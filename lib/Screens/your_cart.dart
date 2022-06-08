@@ -118,3 +118,73 @@ class _YourCartState extends State<YourCart> {
                                                     builder: (context) =>
                                                         AddRantDetail(widget.startDate, widget.endDate)));
                                           },
+                                          child: const BoldFont(
+                                              "Continue", 16, darkblue),
+                                        ),
+                                      ],
+                                    ),
+                                    const SizedBox(
+                                      height: 40,
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ],
+                        );
+                      }));
+                } else {
+                  return const Center(
+                    child: Text("Add Some Products"),
+                  );
+                }
+              })),
+        ),
+      ),
+    );
+  }
+
+  Widget myList(
+    BuildContext context,
+    String image,
+     String Product,){
+    return Row(
+      children: [
+        ClipRRect(
+          borderRadius: const BorderRadius.all(
+            Radius.circular(15),
+          ),
+          child: SizedBox(
+            width: 90,
+            height: 100,
+            child: Image.asset(image),
+          ),
+        ),
+        const SizedBox(
+          width: 15,
+        ),
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              children: [
+                BoldFont(Product, 17, darkblue),
+                const SizedBox(width: 30),
+              ],
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            const BoldFont("Short description", 12, black),
+            const SizedBox(
+              height: 5,
+            ),
+            GestureDetector(
+              onTap: () {},
+              child: const BoldFont("Remove Item", 15, darkblue),
+            ),
+            const SizedBox(
+              height: 10,
+            )
+          ],
+        ),
