@@ -46,3 +46,7 @@ class _YourCartState extends State<YourCart> {
             begin: Alignment.topCenter,
           ),
         ),
+         child: Padding(
+          padding: const EdgeInsets.all(18.0),
+          child: StreamBuilder(
+              stream: FirebaseFirestore.instance
