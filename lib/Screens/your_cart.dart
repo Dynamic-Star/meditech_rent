@@ -188,3 +188,17 @@ class _YourCartState extends State<YourCart> {
             )
           ],
         ),
+         ],
+    );
+  }
+}
+
+GestureDetector Delete(String id) {
+  return GestureDetector(
+      onTap: () {
+        final docUser =
+            FirebaseFirestore.instance.collection("cardInfo").doc(id);
+        docUser.delete();
+      },
+      child: const BoldFont("Delete", 15, darkblue));
+}
