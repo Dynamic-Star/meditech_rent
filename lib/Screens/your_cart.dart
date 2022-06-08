@@ -67,4 +67,35 @@ class _YourCartState extends State<YourCart> {
                             Row(
                               children: [
                                 Column(
-                                  children:
+                                  children: [
+                                      Container(
+                                      height: 90,
+                                      width: 120,
+                                      decoration: BoxDecoration(
+                                          boxShadow: const [
+                                            BoxShadow(
+                                                color: hint,
+                                                spreadRadius: 1,
+                                                blurRadius: 1)
+                                          ],
+                                          borderRadius: BorderRadius.circular(15),
+                                          // color: Colors.indigo,
+                                          image: DecorationImage(
+                                              image: NetworkImage(userData['image']),
+                                              fit: BoxFit.cover)),
+                                    ),
+                                    const SizedBox(height: 30)
+                                  ],
+                                ),
+                                // const SizedBox(height: 30),
+                                const SizedBox(width: 15),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const SizedBox(height: 10),
+                                    BoldFont(userData['title'], 18, darkblue),
+                                    const SizedBox(height: 5),
+                                    PlainFont(userData['rent'], 16, black),
+
+                                    // const SizedBox(height: 5),
+                                    Row(
