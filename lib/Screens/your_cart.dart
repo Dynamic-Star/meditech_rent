@@ -50,7 +50,6 @@ class _YourCartState extends State<YourCart> {
           padding: const EdgeInsets.all(18.0),
           child: StreamBuilder(
               stream: FirebaseFirestore.instance
-               stream: FirebaseFirestore.instance
                   .collection("cardInfo")
                   .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
                   .snapshots(),
@@ -99,3 +98,23 @@ class _YourCartState extends State<YourCart> {
 
                                     // const SizedBox(height: 5),
                                     Row(
+                                        children: [
+                                        TextButton(
+                                          onPressed: () {
+                                            final docUser = FirebaseFirestore
+                                                .instance
+                                                .collection("cardInfo")
+                                                .doc(userData['id']);
+                                            docUser.delete();
+                                          },
+                                          child: const BoldFont(
+                                              "Remove", 16, darkblue),
+                                        ),
+                                        TextButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        AddRantDetail(widget.startDate, widget.endDate)));
+                                          },
