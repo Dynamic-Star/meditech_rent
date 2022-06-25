@@ -152,3 +152,13 @@ class _paymentIntegrationState extends State<paymentIntegration> {
   }
 
   calculateAmount(String amount) {
+        final a = (int.parse(amount)) * 100;
+    return a.toString();
+  }
+
+  void addData() {}
+}
+
+
+
+//sk_test_51L2zbASFttPmdlUTcvEuaCbY2dteE3XnGObVdSeLaDt17YkPEuhmj6ZpokTRNJDKeh5niZaGmX0fQVDRZUlHgad2003KjcNKXf
