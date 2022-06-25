@@ -49,3 +49,25 @@ class _NotificationScreenState extends State<NotificationScreen> {
     );
 
     // 3. This method only call when App in background and not terminated(not closed)
+        FirebaseMessaging.onMessageOpenedApp.listen(
+      (message) {
+        print("FirebaseMessaging.onMessageOpenedApp.listen");
+        if (message.notification != null) {
+          print(message.notification!.title);
+          print(message.notification!.body);
+          print("message.data22 ${message.data['_id']}");
+        }
+      },
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+          child: Container(
+        child: const Text("notification screen"),
+      )),
+    );
+  }
+}
