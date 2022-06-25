@@ -77,4 +77,61 @@ class _SearchBoxState extends State<SearchBox> {
                               suffixIcon: IconButton(
                                   onPressed: () {
                                     onSearch();
-                                  },  
+                                  },
+                                                                   icon: const Icon(
+                                    Icons.search, size: 22, color: darkBlue
+                                  )),
+                              border: InputBorder.none,
+                              prefixIcon: const Icon(Icons.accessible, size: 30, color: darkBlue),
+                              hintText: "Search any product...",
+                          hintStyle: const TextStyle(color: hint)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: StreamBuilder(
+                      stream: FirebaseFirestore.instance
+                          .collection('profileInfo')
+                          .where(
+                            'title',
+                            isGreaterThanOrEqualTo:
+                                searchController.text.trim(),
+                          )
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState ==
+                            ConnectionState.active) {
+                          if (snapshot.hasData) {
+                            QuerySnapshot dataSnapshot =
+                                snapshot.data as QuerySnapshot;
+                            if (dataSnapshot.docs.isNotEmpty) {
+                              return ListView.builder(
+                                itemCount: dataSnapshot.docs.length,
+                                itemBuilder: (context, index) {
+                                  Map<String, dynamic> userMap =
+                                      dataSnapshot.docs[index].data()
+                                          as Map<String, dynamic>;
+                                  UserInfodata searchedUser =
+                                      UserInfodata.fromJson(userMap);
+
+                                  return ListTile(
+                                    leading: ClipRRect(
+                                      borderRadius: BorderRadius.circular(25),
+                                      child: CircleAvatar(
+                                        backgroundColor: Theme.of(context)
+                                            .colorScheme
+                                            .secondary
+                                            .withAlpha(100),
+                                        radius: 25,
+                                        child: Image.network(
+                                          searchedUser.imageurl,
+                                          fit: BoxFit.cover,
+                                          errorBuilder:
+                                              ((context, error, stackTrace) {
+                                            return const Icon(
+                                                Icons.account_circle_rounded);
+                                          }),
+                                        ),
+                                      ),
+                                    ),  
