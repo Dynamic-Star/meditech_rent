@@ -48,4 +48,33 @@ class _SearchBoxState extends State<SearchBox> {
             ? const Center(
                 child: CircularProgressIndicator(),
               )
-              
+                       : Column(
+                children: [
+                  // search container
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(12, 25, 12, 10),
+                    child: Container(
+                      height: length.height * 0.05,
+                      padding: const EdgeInsets.symmetric(horizontal: 8),
+                      margin: const EdgeInsets.symmetric(
+                          horizontal: 3, vertical: 0),
+                      decoration: BoxDecoration(
+                          color: white,
+                          boxShadow: const [
+                            BoxShadow(color: darkBlue, spreadRadius: 1)
+                          ],
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Padding(
+                        padding: const EdgeInsets.fromLTRB(0, 4, 0, 2),
+                        child: TextField(
+                          controller: searchController,
+                          onChanged: (value) {
+                            setState(() {});
+                          },
+                          decoration: InputDecoration(
+                            fillColor: white,
+                              filled: true,
+                              suffixIcon: IconButton(
+                                  onPressed: () {
+                                    onSearch();
+                                  },  
