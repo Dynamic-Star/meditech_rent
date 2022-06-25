@@ -112,3 +112,43 @@ class _paymentIntegrationState extends State<paymentIntegration> {
             .showSnackBar(const SnackBar(content: Text("paid successfully")));
 
         paymentIntentData = null;
+              }).onError((error, stackTrace) {
+        print('Exception/DISPLAYPAYMENTSHEET==> $error $stackTrace');
+      });
+    } on StripeException catch (e) {
+      print('Exception/DISPLAYPAYMENTSHEET==> $e');
+      showDialog(
+          context: context,
+          builder: (_) => const AlertDialog(
+                content: Text("Cancelled "),
+              ));
+    } catch (e) {
+      print('$e');
+    }
+  }
+
+  //  Future<Map<String, dynamic>>
+  createPaymentIntent(String amount, String currency) async {
+    try {
+      Map<String, dynamic> body = {
+        'amount': calculateAmount('20'),
+        'currency': currency,
+        'payment_method_types[]': 'card'
+      };
+      print(body);
+      var response = await http.post(
+          Uri.parse('https://api.stripe.com/v1/payment_intents'),
+          body: body,
+          headers: {
+            'Authorization':
+                'Bearer sk_test_51L2zbASFttPmdlUTcvEuaCbY2dteE3XnGObVdSeLaDt17YkPEuhmj6ZpokTRNJDKeh5niZaGmX0fQVDRZUlHgad2003KjcNKXf',
+            'Content-Type': 'application/x-www-form-urlencoded'
+          });
+      print('Create Intent reponse ===> ${response.body.toString()}');
+      return jsonDecode(response.body);
+    } catch (err) {
+      print('err charging user: ${err.toString()}');
+    }
+  }
+
+  calculateAmount(String amount) {
