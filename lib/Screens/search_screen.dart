@@ -156,3 +156,21 @@ class _SearchBoxState extends State<SearchBox> {
                                 ),
                               );
                             }
+                                                     } else if (snapshot.hasError) {
+                            return const Text('An error occurred !');
+                          } else {
+                            return const Text('No results found !!');
+                          }
+                        } else {
+                          return const Center(
+                              child: CircularProgressIndicator());
+                        }
+                      },
+                    ),
+                  ),
+                ],
+              ),
+      ),
+    );
+  }
+}
