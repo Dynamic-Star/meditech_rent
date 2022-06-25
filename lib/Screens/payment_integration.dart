@@ -36,3 +36,35 @@ class _paymentIntegrationState extends State<paymentIntegration> {
             begin: Alignment.topCenter,
           ),
         ),
+                child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const PlainFont(
+                  "Thanks for renting with us !!", 15, Colors.black54),
+              const PlainFont(
+                  "Checkout and do your payment from below", 15, black),
+              const PlainFont(
+                  "Correct details are necessary for payment", 15, darkBlue),
+              const SizedBox(height: 30),
+              InkWell(
+                onTap: () async {
+                  await makePayment();
+                  // addData();
+                },
+                child: Container(
+                  height: 50,
+                  width: 200,
+                  color: darkBlue,
+                  child: const Center(
+                      child: PlainFont("Proceed to pay", 18, white)),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future<void> makePayment() async {
