@@ -18,3 +18,21 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
           onPressed: () {
             Navigator.pop(context);
           },
+                    icon: const Icon(
+            Icons.arrow_back_outlined,
+            color: darkBlue,
+            size: 30,
+          ),
+        ),
+        elevation: 0.0,
+      ),
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: MediaQuery.of(context).size.width,
+        decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            colors: <Color>[Colors.white, background],
+            end: Alignment.bottomCenter,
+            begin: Alignment.topCenter,
+          ),
+        ),
