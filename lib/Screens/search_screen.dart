@@ -135,3 +135,24 @@ class _SearchBoxState extends State<SearchBox> {
                                         ),
                                       ),
                                     ),  
+                                                                       title: Text(searchedUser.title.toString()),
+                                    subtitle:
+                                        Text(searchedUser.desc.toString()),
+                                    trailing: const Icon(
+                                        Icons.keyboard_arrow_right_rounded),
+                                    onTap: () {},
+                                  );
+                                },
+                              );
+                            } else {
+                              return const Padding(
+                                padding: EdgeInsets.all(20),
+                                child: Text(
+                                  'Oops, No item found ! Check upper and lower cases...',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color:darkBlue
+                                  ),
+                                ),
+                              );
+                            }
