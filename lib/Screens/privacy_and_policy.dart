@@ -36,3 +36,16 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
             begin: Alignment.topCenter,
           ),
         ),
+         child: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(30, 20, 30, 0),
+            child: Center(
+              child: Column(
+                children: [
+                  CircleAvatar(
+                      radius: 70,
+                      backgroundImage:
+                          AssetImage("assets/images/MediTech-Rent.png")),
+                  SizedBox(
+                    height: 30,
+                  ),
